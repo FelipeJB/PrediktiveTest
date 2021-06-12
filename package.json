@@ -1,0 +1,15 @@
+{
+  "name": "tradesy",
+  "version": "1.0.0",
+  "description": "E2E tests for shopping plattform",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "./node_modules/.bin/cypress run --browser=chrome",
+    "cy:run:headless": "./node_modules/.bin/cypress run"
+  },
+  "author": "Felipe Jimenez",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^7.5.0"
+  }
+}
