@@ -35,6 +35,14 @@ export class itemsListPageServices {
       });    
   }
 
+  /*
+   * Checks if all items match its respective designer filter
+  */
+  isDesignerFilterApplied(filterName){
+    cy.get(itemsListPage.items.designerName)
+      .should('contain.text', filterName);
+  }
+
 }
 
 export const itemsListPagePO = new itemsListPageServices();

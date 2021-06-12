@@ -1,4 +1,10 @@
-import { headerPageServices, loginPageServices, itemsListPageServices, closetPageServices, closetItemsListPageServices } from "../support/services/pageServices"
+import { headerPageServices, 
+         loginPageServices,   
+         filtersBarPageServices, 
+         itemsListPageServices, 
+         closetPageServices, 
+         closetItemsListPageServices 
+        } from "../support/services/pageServices"
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false
@@ -9,7 +15,7 @@ context('Tradesy products interaction tests', () => {
   //These 3 tests should be separated on different specs according to the feature or function.
 
   beforeEach(() => {
-    //This code should be defined as a command or as a custom service, as login may be common for different specs.
+    //Code on this hook should be defined as a command or as a custom service, as login may be common for different specs.
     cy.fixture('appUrls.json').then((urls) => {
       cy.visit(urls.home);
     });
@@ -37,6 +43,12 @@ context('Tradesy products interaction tests', () => {
     closetPageServices.isClosetItemsAmmountAccordingAPI();
   })
 
- 
+  it('Apply a filter and ensure the items are updated.', () => {
+    cy.fixture('appUrls.json').then((urls) => {
+      cy.visit(urls.hobos);
+    });
+    filtersBarPageServices.selectDesignerFilter('Prada');
+    itemsListPageServices.isDesignerFilterApplied('Prada');
+  })
 
 });
